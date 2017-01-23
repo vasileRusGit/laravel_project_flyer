@@ -4,8 +4,6 @@
     <h1>Selling your home ?</h1>
     <hr>
 
-    <div class="row">
-        @include('flyers.form')
-    </div>
+    @include('flyers.form')
 
 @stop

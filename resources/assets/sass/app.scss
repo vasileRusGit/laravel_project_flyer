@@ -11,7 +11,9 @@
 // Bootstrap
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 
-body{
-  padding-top: 70px
+img{
+  max-width:100%;
 }
-
+.gallery_images{
+  margin-top:30px;
+}

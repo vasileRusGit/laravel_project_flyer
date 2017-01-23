@@ -7696,8 +7696,12 @@ button.close {
   }
 }
 
-body {
-  padding-top: 70px;
+img {
+  max-width: 100%;
+}
+
+.gallery_images {
+  margin-top: 30px;
 }
 
 /*# sourceMappingURL=app.css.map */

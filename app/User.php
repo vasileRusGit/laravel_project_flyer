@@ -5,6 +5,9 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
+/**
+ * @property mixed id
+ */
 class User extends Authenticatable
 {
     use Notifiable;
@@ -26,4 +29,19 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function owns($relation)
+    {
+        return $relation->user_id == $this->id;
+    }
+
+    public function flyers()
+    {
+        return $this->hasMany(Flyer::class);
+    }
+
+    public function publish(Flyer $flyer)
+    {
+        return $this->flyers()->save($flyer);
+    }
 }

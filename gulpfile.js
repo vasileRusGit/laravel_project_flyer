@@ -16,6 +16,8 @@ require('laravel-elixir-vue-2');
 elixir(function (mix) {
     mix.sass('app.scss')
         .styles('libs/sweetalert.css' , './public/css/sweetalert.css')
-        .scripts('libs/sweetalert-dev.js', './public/js/sweetalert.js');
+        .styles('libs/dropzone.css' , './public/css/dropzone.css')
+        .scripts('libs/sweetalert-dev.js', './public/js/sweetalert.js')
+        .scripts('libs/dropzone.js', './public/js/dropzone.js');
 });
 
