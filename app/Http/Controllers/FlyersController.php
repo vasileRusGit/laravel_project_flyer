@@ -53,9 +53,10 @@ class FlyersController extends Controller
 
     public function showAll()
     {
-        $flyer = Flyer::with('photos')->get();
+        $flyer = Flyer::with('photos')->paginate(6);
+        $pagination = Flyer::paginate(6);
 
-        return view('/flyers.showAll', compact('flyer'));
+        return view('/flyers.showAll', compact('flyer', 'pagination'));
     }
 
     /**

@@ -38,5 +38,6 @@
         @endforeach
     </div>
 
+    {{$pagination->links()}}
 
 @stop
