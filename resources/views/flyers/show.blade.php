@@ -23,12 +23,14 @@
                 </div>
             @endforeach
 
-            @if(\Auth::user()->owns($flyer) && \Auth::user())
-                <hr>
-                <form action="/{{$flyer->zip}}/{{$flyer->street}}/photos" method="post" id="addPhotoForm"
-                      class="dropzone">
-                    {{csrf_field()}}
-                </form>
+            @if(\Auth::check() == true)
+                @if(\Auth::user()->owns($flyer))
+                    <hr>
+                    <form action="/{{$flyer->zip}}/{{$flyer->street}}/photos" method="post" id="addPhotoForm"
+                          class="dropzone">
+                        {{csrf_field()}}
+                    </form>
+                @endif
             @endif
         </div>
     </div>

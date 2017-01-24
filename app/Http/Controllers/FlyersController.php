@@ -7,17 +7,11 @@ use Illuminate\Http\Request;
 use App\Flyer;
 use App\Photo;
 use Intervention\Image\Facades\Image;
-use Carbon\Carbon;
 
 class FlyersController extends Controller
 {
 
     protected $baseDir = "images/photos";
-
-    public function __construct()
-    {
-        $this->middleware('auth', ['except' => 'show']);
-    }
 
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
@@ -33,8 +27,6 @@ class FlyersController extends Controller
      */
     public function store(FlyerRequest $request)
     {
-        //persist the flyer
-//        Flyer::create($request->all());
         // link the flyer to the user
         $flyer = \Auth::user()->publish(
             new Flyer($request->all())
@@ -61,9 +53,9 @@ class FlyersController extends Controller
 
     public function showAll()
     {
-        $flyer = Flyer::with('photos')->where('user_id', \Auth::user()->id)->get();
+        $flyer = Flyer::with('photos')->get();
 
-        return view('/flyers.showAll', compact('flyer', 'photo'));
+        return view('/flyers.showAll', compact('flyer'));
     }
 
     /**
@@ -104,8 +96,4 @@ class FlyersController extends Controller
 
         return redirect('/');
     }
-
-    
-
-
 }

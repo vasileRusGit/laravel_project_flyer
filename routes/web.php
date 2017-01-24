@@ -7,7 +7,7 @@ Route::get('/', function () {
 });
 
 Route::resource('flyers', 'FlyersController');
-Route::get('flyers', 'FlyersController@showAll');
+Route::get('flyers', 'FlyersController@showAll')->middleware(['auth' || 'guest']);
 Route::get('{zip}/{street}', 'FlyersController@show');
 Route::post('{zip}/{street}/photos', 'FlyersController@addPhoto');
 
