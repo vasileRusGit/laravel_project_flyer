@@ -31,15 +31,15 @@
         <div class="collapse navbar-collapse" id="app-navbar-collapse">
             <!-- Left Side Of Navbar -->
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
-                <li><a href="/flyers">Flyers</a></li>
+                <li id="home" class="active"><a href="/">Home</a></li>
+                <li id="flyers"><a href="/flyers">Flyers</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
 
             <!-- Right Side Of Navbar -->
             <ul class="nav navbar-nav navbar-right">
                 <!-- Authentication Links -->
-                @if (Auth::guest())
+                @if(Auth::guest())
                     <li><a href="{{ url('/login') }}">Login</a></li>
                     <li><a href="{{ url('/register') }}">Register</a></li>
                 @else
@@ -78,6 +78,7 @@
 <script src="/js/app.js"></script>
 <script src="/js/sweetalert.js"></script>
 <script src="/js/dropzone.js"></script>
+<script src="/js/custom.js"></script>
 <script>
     Dropzone.options.addPhotoForm = {
         paramName: 'photo',

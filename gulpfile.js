@@ -18,6 +18,7 @@ elixir(function (mix) {
         .styles('libs/sweetalert.css' , './public/css/sweetalert.css')
         .styles('libs/dropzone.css' , './public/css/dropzone.css')
         .scripts('libs/sweetalert-dev.js', './public/js/sweetalert.js')
+        .scripts('custom.js', './public/js/custom.js')
         .scripts('libs/dropzone.js', './public/js/dropzone.js');
 });
 

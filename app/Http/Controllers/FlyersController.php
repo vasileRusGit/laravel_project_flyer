@@ -5,11 +5,13 @@ namespace App\Http\Controllers;
 use App\Http\Requests\FlyerRequest;
 use Illuminate\Http\Request;
 use App\Flyer;
+use App\Photo;
 use Intervention\Image\Facades\Image;
-
+use Carbon\Carbon;
 
 class FlyersController extends Controller
 {
+
     protected $baseDir = "images/photos";
 
     public function __construct()
@@ -36,7 +38,7 @@ class FlyersController extends Controller
         // link the flyer to the user
         $flyer = \Auth::user()->publish(
             new Flyer($request->all())
-        );
+            );
 
         // flash messages
         flash()->success('Success!', 'Tks for registering on our site@');
@@ -59,10 +61,9 @@ class FlyersController extends Controller
 
     public function showAll()
     {
-        $flyer = Flyer::get();
-//        dd($flyer);
+        $flyer = Flyer::with('photos')->where('user_id', \Auth::user()->id)->get();
 
-        return view('/flyers.showAll', compact('flyer'));
+        return view('/flyers.showAll', compact('flyer', 'photo'));
     }
 
     /**
@@ -75,7 +76,7 @@ class FlyersController extends Controller
     {
         $this->validate($request, array(
             'photo' => 'required|mimes:jpg,jpeg,png,bmp'
-        ));
+            ));
 
         $file = $request->file('photo');
         $name = time() . $file->getClientOriginalName();
@@ -103,4 +104,8 @@ class FlyersController extends Controller
 
         return redirect('/');
     }
+
+    
+
+
 }

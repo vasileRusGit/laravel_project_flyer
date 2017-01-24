@@ -8,6 +8,9 @@
 // Form
 @import "forms";
 
+// Article
+@import "article";
+
 // Bootstrap
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 
@@ -16,4 +19,13 @@ img{
 }
 .gallery_images{
   margin-top:30px;
+}
+#articles > article > header > a > img{
+	min-height: 240px;
+}
+.flyers{
+	margin-top: -200px;
+}
+.flyers .row{
+	padding-top: 440px;
 }
